@@ -1,0 +1,32 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Check Prettier standards
+yarn check-format || (
+  echo '❌ Prettier Check Failed.'
+  false;
+)
+echo '✅ Prettier Check success.'
+
+# Check ESLint Standards
+yarn check-lint || (
+  echo '❌ ESLint Check Failed.'
+  false;
+)
+echo '✅ ESLint Check success.'
+
+# Check tsconfig standards
+yarn check-types || (
+  echo '❌ Type check Failed.'
+  false;
+)
+echo '✅ Type check success.'
+
+echo '*️⃣ Build in process...'
+
+yarn build || (
+  echo '❌ Next build Failed.'
+  false;
+)
+
+echo '✅ Build is done.'

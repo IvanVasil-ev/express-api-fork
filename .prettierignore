@@ -1,0 +1,6 @@
+# Ignore artifacts:
+node_modules
+yarn.lock
+package-lock.json
+build
+src/database/*
